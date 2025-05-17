@@ -1,0 +1,7 @@
+{
+    "name": "BookShelfApp",
+    "displayName": "BookShelfApp",
+    "expo": {
+      "platforms": ["android", "ios"]
+    }
+  }
