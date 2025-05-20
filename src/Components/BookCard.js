@@ -1,39 +1,15 @@
-// src/components/BookCard.js
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, Platform } from 'react-native';
+import tw from 'twrnc';
 
-const BookCard = ({ book }) => {
-  return (
-    <View style={styles.card}>
-      <Image source={{ uri: book.image }} style={styles.image} />
-      <Text style={styles.title}>{book.title}</Text>
-      <Text style={styles.author}>{book.author}</Text>
+const BookCard = ({ title, authors, thumbnail }) => (
+  <View style={tw`flex-row p-4 mb-4 bg-white rounded-lg shadow ${Platform.OS === 'web' ? 'max-w-2xl' : ''}`}>
+    {thumbnail && <Image source={{ uri: thumbnail }} style={tw`w-16 h-24 mr-4`} />}
+    <View>
+      <Text style={tw`text-lg font-bold`}>{title}</Text>
+      <Text style={tw`text-gray-600`}>{authors || 'Autor desconhecido'}</Text>
     </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#FDF5E6',
-    borderRadius: 10,
-    padding: 10,
-    margin: 10,
-  },
-  image: {
-    width: 100,
-    height: 150,
-    resizeMode: 'cover',
-    borderRadius: 10,
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 5,
-  },
-  author: {
-    fontSize: 14,
-    color: '#8B0000',
-  },
-});
+  </View>
+);
 
 export default BookCard;
